@@ -26,3 +26,6 @@ print ("boolean const. bool(0.1)", bool(0.1))
 print ("boolean cons. bool([])", bool([1,2,3]))
 print ("boolean cons. bool([])", bool(""))
 print ("boolean cons. bool([])", bool("False"))
+
+#test
+print ("new line")
