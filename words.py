@@ -25,6 +25,14 @@ def fetch_words(filename):
                 data.append(word)
     return data
 
+def print_items(items):
+    """
+    Prints elements of the collection
+    :param story_words: collection of objects
+    :return: nother
+    """
+    for item in items:
+        print(item)
 
 def main():
     """
@@ -33,7 +41,7 @@ def main():
     """
     filename = r"http://icarus.cs.weber.edu/~hvalle/hafb/words.txt"
     words = fetch_words(filename)
-    print(words)
+    print_items(words)
 
 if __name__ == '__main__':
     main()
