@@ -18,3 +18,7 @@ string"""
 print(s3)
 s4 = "this is\na multi-line\nstirng"
 print(s4)
+
+#support for backslash
+s5 = "A\\in a string"
+print(s5)
