@@ -16,7 +16,7 @@ def fetch_words(filename):
     """
 
     count = 0
-    data = []
+    data = []   #empty list
     with urlopen(filename) as story:
         for line in (story):
             words = line.decode('utf-8').split()
