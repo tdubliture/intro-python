@@ -19,6 +19,9 @@ with urlopen(file) as story:
             else:
                 data[word] = 1
             count += 1
+#sort by keys
+for key in sorted(data.keys()):
+    print(key, data[key])
 
 
 print("total data", data)
