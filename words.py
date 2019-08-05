@@ -20,7 +20,6 @@ with urlopen(file) as story:
                 data[word] = 1
             count += 1
 
-data.
 
 print("total data", data)
 print("total number of words", count)
