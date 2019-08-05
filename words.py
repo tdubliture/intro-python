@@ -5,24 +5,36 @@ http://icarus.cs.weber.edu/~hvalle/hafb/words.txt
 task 1: count the number of words in a document
 """
 from urllib.request import urlopen
-file = r"http://icarus.cs.weber.edu/~hvalle/hafb/words.txt"
+from functions import even_or_odd
 
-count = 0
-data = {}
-with urlopen(file) as story:
-    for line in (story):
-        words =  line.decode('utf-8').split()
-        print(words)
-        for word in (words):
-            if word in data:
-                data[word] += 1
-            else:
-                data[word] = 1
-            count += 1
-#sort by keys
-for key in sorted(data.keys()):
-    print(key, data[key])
+def fetch_words(filename):
+    """
+    Finds the number of words in a text doc
+    finds the number of occurrences of each word
+    :param filename url to file
+    :return:
+    """
+
+    count = 0
+    data = []
+    with urlopen(filename) as story:
+        for line in (story):
+            words = line.decode('utf-8').split()
+            print(words)
+            for word in (words):
+                data.append(word)
+    return data
 
 
-print("total data", data)
-print("total number of words", count)
+def main():
+    """
+    test function
+    :returns nothing
+    """
+    filename = r"http://icarus.cs.weber.edu/~hvalle/hafb/words.txt"
+    words = fetch_words(filename)
+    print(words)
+
+if __name__ == '__main__':
+    main()
+    exit(0)
