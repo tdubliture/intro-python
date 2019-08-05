@@ -14,3 +14,19 @@ d = {'alice':'801-123-45-8989',
 print(d, type(d))
 #access one element
 print(d['pedro'])
+
+roster = {}
+total =0
+while total < 3:
+    #get key value
+    name = input("enter a name:")
+    grade = input("enter grade")
+    roster[name] = grade
+    #roster.update(name,grade)
+    #get value associated with key
+
+    #add element to dictionary
+    #not if key value exist it will update the value, otherwise it will be added
+
+    total +=1
+print(roster)
