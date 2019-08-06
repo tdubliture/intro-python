@@ -1,0 +1,26 @@
+"""
+set an alarm to take a break by playing a youtube video
+"""
+import webbrowser
+import time
+
+
+
+def main():
+    """
+    test function
+    :return: none
+    """
+    video_address = "https://www.youtube.com/watch?v=CD-E-LDc384"
+    counter = 0
+    while counter < 3:
+        # Delay "sleep"
+        time.sleep(3600)  # 1 hour
+        webbrowser.open(video_address)
+        counter +=1
+
+
+
+if __name__ == '__main__':
+    main()
+    exit(0)
