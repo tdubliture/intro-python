@@ -7,6 +7,7 @@ Basics of conditionals
 Basics of Iterations
 Basics of functions (def)
 The concept of modularity
+
 Day 2 Summary
 Learn about opening youtube videos (webbrowser module)
 Learn about time module
