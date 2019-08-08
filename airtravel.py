@@ -8,7 +8,7 @@ class Flight:
     a flight with a particular passenger aircraft
     """
 
-    def __init__(self,number):
+    def __init__(self,number, aircraft):
         # implementation details begin with "_"
         # validate flight number
         # 5 char long AADDD
@@ -21,6 +21,13 @@ class Flight:
         if not number[2:].isdigit():
             raise ValueError("last three digits must be numbers")
         self._number = number
+        self._aircraft = aircraft
+
+        rows, seats = self._aircraft.seating_plan()
+        self._seating = [None] \
+                        + [{letter: None for letter in seats} for _ in rows]
+
+
 
     def airline(self):
         """
@@ -39,6 +46,36 @@ class Flight:
         return self._number[2:]
 
 
+    def allocate_seat(self,seat,passenger):
+        """
+        allocate a seat for a passenger
+        :param seat: seat designator 12c, 21F
+        :param passenger: name of passenger
+        :return:
+        """
+
+        rows, seat_letter = self._aircraft.seating_plan()
+        letter = seat[-1] #seat letter
+        if letter not in seat_letter:
+            raise ValueError("Invalid seat letter {}".format(letter))
+
+        row_text = seat[:-1]
+        try:
+            row = int(row_text)
+        except ValueError:
+            raise ValueError("Invalid seat row{}".format(row_text))
+
+        if row not in rows:
+            raise ValueError("Invalid row number{}".format(row))
+
+        if self._seating[row][letter] is not None:
+            raise ValueError("Seat {} already occupied".format(seat))
+
+        #assign the seat
+        self._seating[row][letter] = passenger
+
+
+
 class Aircraft:
     """
     aircraft class
@@ -50,13 +87,16 @@ class Aircraft:
         self._num_rows =num_rows
         self._num_seats_per_row = num_seats_per_row
 
+
     def registration(self):
         return self._registration
 
     def model(self):
         return self._model
 
-
+    def seating_plan(self):
+        return(range(1,self._num_rows+1),
+               "ABCDEFGHJK"[:self._num_seats_per_row])
 
 
 def main():

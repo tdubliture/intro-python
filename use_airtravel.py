@@ -2,25 +2,24 @@
 use flight class
 """
 from airtravel import Flight, Aircraft
+from pprint import pprint as pp
 
 def main():
     """
     Test function
     :return: 
     """
-    f = Flight("SN066")
-    print(f.number())
-    f = Flight("SN665")
-    print(f.number())
+    f1 = Flight("SN066",Aircraft("G-EUP","Airbus A319",
+                                 num_rows=22,
+                                 num_seats_per_row=6))
 
-    # could use this notaion Flight.number(f)
-    f = Flight("SN650")
-    print(f.number())
-    print(f.airline())
+    f1.allocate_seat("02A", "Guido Van Rossum")
+    f1.allocate_seat("12B", "Rasmus Lerdorf")
+    f1.allocate_seat("15F", "Bjanre Stroustrup")
+    f1.allocate_seat("03A", "Larry Wall")
+    f1.allocate_seat("16F", "Yukihiro Mastsumoto")
 
-    a1 = Aircraft("G-EUP","Airbus A319",num_rows=22,num_seats_per_row=6)
-    print(a1.registration(),a1.model(),a1._num_rows,a1._num_seats_per_row)
-
+    pp(f1._seating)
 
 if __name__ == '__main__':
     main()
