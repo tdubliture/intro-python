@@ -28,14 +28,40 @@ def run_take():
         print(item)
 
 
+def distinct(iterable):
+    """
+    return unique items by eliminating duplicates
+    :param iterable: source series
+    :return: unique elements in order from iterable
+    """
+    seen = set()
+    for item in iterable:
+        if item in seen:
+            continue
+        yield item
+        seen.add(item)
+
+
+def run_pipeline():
+    items = [3,6,6,2,1,1]
+    for item in take(3,distinct(items)):
+        print(item)
+
+
+def run_distinct():
+    items = [5,7,7,6,5,5]
+    for item in distinct(items):
+        print(item)
+
 
 def main():
     """
     Test function
     :return: 
     """
-    run_take()
-    
+    #run_take()
+    #run_distinct()
+    run_pipeline()
 
 
 if __name__ == '__main__':
